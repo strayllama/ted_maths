@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Teds Maths</title>
+</head>
+
+<body>
+<h1>Teds Maths!</h1>
+
+<h2>Am I a stair?</h2>
+<div>
+    <label for="stair-input">Number:</label>
+    <input
+            style="width: 300px;"
+            type="text"
+            id="stair-input"
+            name="stair"
+    />
+    <button type="submit" onclick="calculateStair()">CHECK</button>
+    <div>
+        <span id="stair-yes-no">YES/NO?</span>
+    </div>
+</div>
+
+<script>
+function calculateStair() {
+    const stairNumberInput = document.getElementById('stair-input').value;
+    const stairNumber = parseInt(stairNumberInput);
+    const allTheNumbers = {}
+    let isStair = false;
+
+    if (stairNumber > 0) {
+        let runningStair = 0;
+        let i = 1
+        for (i; !isStair ; i++) {
+            if (runningStair === stairNumber) {
+                isStair = true;
+            } else {
+                runningStair += i;
+                allTheNumbers[`${i}`] = runningStair;
+            }
+        }
+        console.log({ stairNumber, isStair, runningStair, allTheNumbers });
+        document.getElementById('stair-yes-no').textContent = `${isStair}`;
+    }
+}
+</script>
+</body>
+</html>
